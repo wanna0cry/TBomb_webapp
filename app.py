@@ -1,6 +1,7 @@
 import streamlit as st
 from smshelper import get_phone_info, selectnode
 from emailhelper import email_bombing
+from system_logs import platform_details
 
 max_limit = {"sms": 1000, "call": 15, "mail": 200}
 
@@ -30,6 +31,7 @@ if user_bomber_select == bomber_options[0]:
             result = selectnode(str(country_code), str(phone_number), sms_count, delay, threads)
             st.success(result["status"])
             st.json(result)
+            st.json(platform_details())
 
 
 
@@ -44,3 +46,4 @@ elif user_bomber_select == bomber_options[1]:
     if st.button("Bombard"):
         result = email_bombing(victime_email, email, password, message, message_relode)
         st.success(result)
+        st.json(platform_details())
