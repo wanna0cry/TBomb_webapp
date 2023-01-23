@@ -1,5 +1,5 @@
 import streamlit as st
-from helper import get_phone_info, selectnode
+from smshelper import get_phone_info, selectnode
 
 max_limit = {"sms": 1000, "call": 15, "mail": 200}
 
