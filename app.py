@@ -26,7 +26,7 @@ st.set_page_config(
      menu_items={
          'Get Help': 'https://github.com/wanna0cry/TBomb_webapp',
          'Report a bug': "https://github.com/wanna0cry/TBomb_webapp/issues/new",
-         'About': "# A free and open-source SMS/Call/email bombing webapp. ## By using this webapp you accept that This application must not be used to cause harm/discomfort/trouble to others. Developers of this webapp are not responsible for your actions. Created By [wanna0cry](https://github.com/wanna0cry)"
+         'About': "A free and open-source SMS/Call/email bombing webapp. By using this webapp you accept that This application must not be used to cause harm/discomfort/trouble to others. Developers of this webapp are not responsible for your actions. Created By [wanna0cry](https://github.com/wanna0cry)"
      }
 )
 
