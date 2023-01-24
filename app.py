@@ -2,6 +2,8 @@ import streamlit as st
 from helpers.smshelper import get_phone_info, selectnode
 from helpers.emailhelper import email_bombing
 from helpers.system_logs import platform_details
+from helpers.mass_emailhelper import mass_email_bombing
+import preprocessor
 
 
 max_limit = {"sms": 1000, "call": 15, "mail": 200}
@@ -16,7 +18,7 @@ def agreement_accepting():
 st.sidebar.title("Bombers")
 
 
-bomber_options = ["SMS Bombing", "Email Bombing"]
+bomber_options = ["SMS Bombing", "Email Bombing", "Mass Email Bombing"]
 user_bomber_select = st.sidebar.selectbox("Select Your Bombing Technique: ", options=bomber_options)
 
 
@@ -46,16 +48,37 @@ if user_bomber_select == bomber_options[0]:
 
 
 elif user_bomber_select == bomber_options[1]:
+    st.title(user_bomber_select)
 
     email = st.text_input("Enter Your Gmail Id: ")
     password = st.text_input("Enter your Gmail App Password: ")
     victime_email = st.text_input("Enter Your Victime Gmail Id: ")
     message = st.text_area("Enter your Message:")
-    message_relode = st.number_input("How many message you want to send to an individual: ", step=1, min_value=1)
+    message_relode = st.number_input("How many message you want to send to an email id: ", step=1, min_value=1)
 
     agreement_accepting()
-    
+
     if st.button("Start Bombing"):
         result = email_bombing(victime_email, email, password, message, message_relode)
         st.success(result)
         st.json(platform_details())
+
+elif user_bomber_select == bomber_options[2]:
+    st.title(user_bomber_select)
+
+    victime_email = st.file_uploader("Upload Your Victime Gmail Id list: " ,type=["txt"])
+
+    if victime_email is not None:
+
+        file_data = victime_email.getvalue().decode("utf-8")
+
+        email = st.text_input("Enter Your Gmail Id: ")
+        password = st.text_input("Enter your Gmail App Password: ")
+        message = st.text_area("Enter your Message:")
+        message_relode = st.number_input("How many message you want to send to each individual email: ", step=1, min_value=1)
+
+        if st.button("Start Bombing"):
+
+            result = mass_email_bombing(file_data, email, password, message, message_relode)
+            st.success(result)
+            st.json(platform_details())
