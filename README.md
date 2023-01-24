@@ -37,9 +37,6 @@ or any version greater than or equal to 3.4, this script has been tested and con
 - Unlimited (with abuse protection) and super-fast bombing with multithreading
 - Possibility of international API support (APIs are offline)
 - Flexible with addition of newer APIs with the help of JSON documents
-- Actively supported by the developers with frequent updates and bug-fixes
-- Intuitive auto-update feature and notification fetch feature included
-- Recently made free and open-source for community contributions
 - Modular codebase and snippets can be easily embedded in other program
 
 
