@@ -3,7 +3,6 @@ from helpers.smshelper import get_phone_info, selectnode
 from helpers.emailhelper import email_bombing
 from helpers.system_logs import platform_details
 from helpers.mass_emailhelper import mass_email_bombing
-import preprocessor
 
 
 max_limit = {"sms": 1000, "call": 15, "mail": 200}
@@ -78,7 +77,7 @@ elif user_bomber_select == bomber_options[2]:
         message_relode = st.number_input("How many message you want to send to each individual email: ", step=1, min_value=1)
 
         agreement_accepting()
-        
+
         if st.button("Start Bombing"):
 
             result = mass_email_bombing(file_data, email, password, message, message_relode)
