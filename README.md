@@ -63,7 +63,6 @@ git clone https://github.com/wanna0cry/TBomb_webapp.git
 cd TBomb_webapp
 ```
 ```shell script
-cd TBomb_webapp
 pip3 install -r requirements.txt
 ```
 ```shell script
