@@ -14,7 +14,7 @@ from io import BytesIO
 from utils.provider import APIProvider
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-
+min_delay = {"sms": 5, "call": 30}
 max_limit = {"sms": 500, "call": 15, "mail": 200}
 
 def readisdc():
@@ -88,22 +88,21 @@ def workernode(mode, cc, target, count, delay, max_threads):
 
 
 
-def selectnode(cc, target, count, delay, max_threads, mode="sms"):
+def selectnode(cc, target, count, delay, mode):
 
     mode = mode.lower().strip()
 
-    try:
+    threads = (count//10) if (count//10) > 0 else 1
+    
+    if mode in ["sms", "call"]:
 
-        if mode in ["sms", "call"]:
+        if cc != "91":
+            max_limit.update({"sms": 100})
+        
+            
+    count = max_limit[mode] if count > max_limit[mode] else count
+    delay = min_delay[mode] if delay < min_delay[mode] else delay
 
-            if cc != "91":
-                max_limit.update({"sms": 100})
 
-        else:
-            raise KeyboardInterrupt
-
-        result = workernode(mode, cc, target, count, delay, max_threads)
-        return result
-
-    except KeyboardInterrupt:
-        sys.exit()
+    result = workernode(mode, cc, target, count, delay, threads)
+    return result
