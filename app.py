@@ -53,7 +53,8 @@ elif user_bomber_select == bomber_options[1]:
     message = st.text_area("Enter your Message:")
     message_relode = st.number_input("How many message you want to send to an individual: ", step=1, min_value=1)
 
-
+    agreement_accepting()
+    
     if st.button("Start Bombing"):
         result = email_bombing(victime_email, email, password, message, message_relode)
         st.success(result)
