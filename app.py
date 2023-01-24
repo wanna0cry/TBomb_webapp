@@ -1,7 +1,7 @@
 import streamlit as st
-from smshelper import get_phone_info, selectnode
-from emailhelper import email_bombing
-from system_logs import platform_details
+from helpers.smshelper import get_phone_info, selectnode
+from helpers.emailhelper import email_bombing
+from helpers.system_logs import platform_details
 
 max_limit = {"sms": 1000, "call": 15, "mail": 200}
 
