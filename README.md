@@ -71,7 +71,7 @@ streamlit run app.py
 ## Contributors
 
 This is a WebApp version of [Tbomb Script](https://github.com/TheSpeedX/TBomb)
-- [wanna0cry](https://github.com/wanna0cry)
+- check [wanna0cry](https://github.com/wanna0cry) at [https://github.com/wanna0cry](https://github.com/wanna0cry)
 
 
 
