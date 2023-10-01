@@ -6,6 +6,7 @@ from helpers.mass_emailhelper import mass_email_bombing
 
 
 
+
 max_limit = {"sms": 1000, "call": 15, "mail": 200}
 
 
